@@ -167,7 +167,7 @@ const menuItems = [
         name: 'Embin\'s Utils',
         extensionId: 'https://notembin.github.io/extensions/Embin/embinutils.js',
         iconURL: defaultExtensionIcon,
-        tags: ['penguinmod'],
+        tags: ['penguinmod', 'datamgmt'],
         description: 'Utility blocks',
         extDeveloper: 'Embin',
         credits: 'Skyhigh173, LilyMakesThings, PenguinMod',
@@ -177,10 +177,59 @@ const menuItems = [
         name: 'Embin\'s JSON',
         extensionId: 'https://notembin.github.io/extensions/Embin/embinjson.js',
         iconURL: defaultExtensionIcon,
-        tags: ['penguinmod'],
+        tags: ['penguinmod', 'datamgmt'],
         description: 'JSON blocks',
         extDeveloper: 'Embin',
         credits: 'Skyhigh173',
+        featured: true
+    },
+    {
+        name: 'TurboWarp Temporary Variables',
+        extensionId: 'lmsTempVars2',
+        iconURL: lilyTempVariablesExtensionIcon,
+        tags: ['turbowarp'],
+        description: 'Create disposable runtime or thread variables.',
+        insetIconURL: turbowarpIcon,
+        credits: 'LilyMakesThings',
+        featured: true
+    },
+    {
+        name: 'Skins',
+        extensionId: 'https://extensions.turbowarp.org/Lily/Skins.js',
+        tags: ['turbowarp', 'graphics'],
+        iconURL: 'https://extensions.turbowarp.org/images/Lily/Skins.svg',
+        insetIconURL: turbowarpIcon,
+        description: 'Have your sprites show themselves as other images or costumes.',
+        featured: true,
+        twDeveloper: 'LilyMakesThings'
+    },
+    {
+        name: 'Zip',
+        extensionId: 'https://extensions.turbowarp.org/CST1229/zip.js',
+        tags: ['turbowarp', 'datamgmt'],
+        iconURL: 'https://extensions.turbowarp.org/images/CST1229/zip.svg',
+        insetIconURL: turbowarpIcon,
+        description: 'Create and edit .zip format files, including .sb3 files.',
+        featured: true,
+        twDeveloper: 'CST1229'
+    },
+    {
+        name: 'TurboWarp JSON',
+        extensionId: 'https://extensions.turbowarp.org/Skyhigh173/json.js',
+        tags: ['turbowarp', 'datamgmt'],
+        iconURL: 'https://extensions.turbowarp.org/images/Skyhigh173/json.svg',
+        insetIconURL: turbowarpIcon,
+        description: 'Handle JSON strings and arrays.',
+        featured: true,
+        twDeveloper: 'Skyhigh173'
+    },
+    {
+        name: 'Embin\'s Comments',
+        extensionId: 'https://notembin.github.io/extensions/Embin/embincomments.js',
+        iconURL: defaultExtensionIcon,
+        tags: ['penguinmod'],
+        description: 'Comment blocks',
+        extDeveloper: 'Embin',
         featured: true
     },
     {
@@ -494,16 +543,6 @@ const menuItems = [
         twDeveloper: 'LilyMakesThings'
     },
     {
-        name: 'Skins',
-        extensionId: 'https://extensions.turbowarp.org/Lily/Skins.js',
-        tags: ['turbowarp', 'graphics'],
-        iconURL: 'https://extensions.turbowarp.org/images/Lily/Skins.svg',
-        insetIconURL: turbowarpIcon,
-        description: 'Have your sprites show themselves as other images or costumes.',
-        featured: true,
-        twDeveloper: 'LilyMakesThings'
-    },
-    {
         name: 'Multiple Timers',
         extensionId: 'jgTimers',
         iconURL: jgTimersExtensionIcon,
@@ -518,16 +557,6 @@ const menuItems = [
         iconURL: gsaTempVariablesExtensionIcon,
         tags: ['penguinmod'],
         description: 'Create variables for use in one block stack. Useful to not clutter the variable list with variables you only use once.',
-        credits: 'LilyMakesThings',
-        featured: true
-    },
-    {
-        name: 'TurboWarp Temporary Variables',
-        extensionId: 'lmsTempVars2',
-        iconURL: lilyTempVariablesExtensionIcon,
-        tags: ['turbowarp'],
-        description: 'Create disposable runtime or thread variables.',
-        insetIconURL: turbowarpIcon,
         credits: 'LilyMakesThings',
         featured: true
     },
@@ -613,15 +642,6 @@ const menuItems = [
         tags: ['penguinmod', 'categoryexpansion'],
         description: 'Complicated maths extension for nerds.',
         extDeveloper: 'jwklong',
-        featured: true
-    },
-    {
-        name: 'Random Utilities',
-        extensionId: 'https://extensions.penguinmod.com/extensions/Gen1x/random_utils.js',
-        iconURL: 'https://extensions.penguinmod.com/images/Gen1x/randomutils.png',
-        tags: ['penguinmod'],
-        description: 'Many blocks related to generating random values, including seed-based number generation, true number generation, UUID\'s, random strings, etc.',
-        extDeveloper: 'G1nX',
         featured: true
     },
     {
