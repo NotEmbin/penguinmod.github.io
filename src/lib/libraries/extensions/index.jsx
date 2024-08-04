@@ -170,6 +170,7 @@ const menuItems = [
         tags: ['penguinmod'],
         description: 'Utility blocks',
         extDeveloper: 'Embin',
+        credits: 'Skyhigh173, LilyMakesThings, PenguinMod',
         featured: true
     },
     {
@@ -179,6 +180,7 @@ const menuItems = [
         tags: ['penguinmod'],
         description: 'JSON blocks',
         extDeveloper: 'Embin',
+        credits: 'Skyhigh173',
         featured: true
     },
     {
