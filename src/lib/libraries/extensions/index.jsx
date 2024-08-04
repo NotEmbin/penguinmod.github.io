@@ -164,6 +164,24 @@ const IsLiveTests = urlParams.has('livetests');
 
 const menuItems = [
     {
+        name: 'Embin\'s Utils',
+        extensionId: 'https://notembin.github.io/extensions/Embin/embinutils.js',
+        iconURL: defaultExtensionIcon,
+        tags: ['penguinmod'],
+        description: 'Utility blocks',
+        extDeveloper: 'Embin',
+        featured: true
+    },
+    {
+        name: 'Embin\'s JSON',
+        extensionId: 'https://notembin.github.io/extensions/Embin/embinjson.js',
+        iconURL: defaultExtensionIcon,
+        tags: ['penguinmod'],
+        description: 'JSON blocks',
+        extDeveloper: 'Embin',
+        featured: true
+    },
+    {
         name: (
             <FormattedMessage
                 defaultMessage="Music"
