@@ -16,10 +16,6 @@ import fullScreenIcon from './icon--fullscreen.svg';
 import unFullScreenIcon from './icon--unfullscreen.svg';
 import largeStageIcon from './icon--large-stage.svg';
 import smallStageIcon from './icon--small-stage.svg';
-<<<<<<< HEAD
-=======
-import unFullScreenIcon from './icon--unfullscreen.svg';
->>>>>>> 5f1522b0b551806087ae8bb126c28d9491f72bf7
 import fullStageIcon from './icon--full-stage.svg';
 import settingsIcon from './icon--settings.svg';
 
@@ -70,11 +66,7 @@ const enableSettingsButton = new URLSearchParams(location.search).has('settings-
 const StageHeaderComponent = function (props) {
     const {
         customStageSize,
-<<<<<<< HEAD
         showFixedLargeSize,
-=======
-		showFixedLargeSize,
->>>>>>> 5f1522b0b551806087ae8bb126c28d9491f72bf7
         isFullScreen,
         isPlayerOnly,
         onKeyPress,
@@ -110,7 +102,6 @@ const StageHeaderComponent = function (props) {
             </div>
         ) : null;
         const fullscreenButton = isFullScreen ? (
-<<<<<<< HEAD
             <div className={styles.unselectWrapper}>
                 <Button
                     className={styles.stageButton}
@@ -141,34 +132,6 @@ const StageHeaderComponent = function (props) {
                     />
                 </Button>
             </div>
-=======
-            <Button
-                className={styles.stageButton}
-                onClick={onSetStageUnFullScreen}
-                onKeyPress={onKeyPress}
-            >
-                <img
-                    alt={props.intl.formatMessage(messages.unFullStageMessage)}
-                    className={styles.stageButtonIcon}
-                    draggable={false}
-                    src={unFullScreenIcon}
-                    title={props.intl.formatMessage(messages.fullscreenControl)}
-                />
-            </Button>
-        ) : FullscreenAPI.available() ? (
-            <Button
-                className={styles.stageButton}
-                onClick={onSetStageFullScreen}
-            >
-                <img
-                    alt={props.intl.formatMessage(messages.fullStageMessage)}
-                    className={styles.stageButtonIcon}
-                    draggable={false}
-                    src={fullScreenIcon}
-                    title={props.intl.formatMessage(messages.fullscreenControl)}
-                />
-            </Button>
->>>>>>> 5f1522b0b551806087ae8bb126c28d9491f72bf7
         ) : null;
         header = (
             <Box
