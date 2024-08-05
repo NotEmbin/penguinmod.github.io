@@ -15,6 +15,7 @@ import fullScreenIcon from './icon--fullscreen.svg';
 import largeStageIcon from './icon--large-stage.svg';
 import smallStageIcon from './icon--small-stage.svg';
 import unFullScreenIcon from './icon--unfullscreen.svg';
+import fullStageIcon from '!../../lib/tw-recolor/build!./icon--full-stage.svg';
 import settingsIcon from './icon--settings.svg';
 
 // import popoutIcon from './icon--popout.svg';
@@ -37,11 +38,16 @@ const messages = defineMessages({
         id: 'gui.stageHeader.stageSizeSmall'
     },
     fullStageSizeMessage: {
+        defaultMessage: 'Switch to full stage',
+        description: 'Button to change stage size to its full size',
+        id: 'tw.stageHeader.full'
+    },
+    fullScreenMessage: {
         defaultMessage: 'Enter full screen mode',
         description: 'Button to change stage size to full screen',
         id: 'gui.stageHeader.stageSizeFull'
     },
-    unFullStageSizeMessage: {
+    unFullScreenMessage: {
         defaultMessage: 'Exit full screen mode',
         description: 'Button to get out of full screen mode',
         id: 'gui.stageHeader.stageSizeUnFull'
@@ -63,13 +69,15 @@ const enableSettingsButton = new URLSearchParams(location.search).has('settings-
 const StageHeaderComponent = function (props) {
     const {
         customStageSize,
+		showFixedLargeSize,
         isFullScreen,
         isPlayerOnly,
         onKeyPress,
+        onSetStageFullScreen,
+        onSetStageUnFullScreen,
         onSetStageLarge,
         onSetStageSmall,
         onSetStageFull,
-        onSetStageUnFull,
         onOpenSettings,
         isEmbedded,
         stageSizeMode,
@@ -110,11 +118,11 @@ const StageHeaderComponent = function (props) {
         const fullscreenButton = isFullScreen ? (
             <Button
                 className={styles.stageButton}
-                onClick={onSetStageUnFull}
+                onClick={onSetStageUnFullScreen}
                 onKeyPress={onKeyPress}
             >
                 <img
-                    alt={props.intl.formatMessage(messages.unFullStageSizeMessage)}
+                    alt={props.intl.formatMessage(messages.unFullStageMessage)}
                     className={styles.stageButtonIcon}
                     draggable={false}
                     src={unFullScreenIcon}
@@ -124,10 +132,10 @@ const StageHeaderComponent = function (props) {
         ) : FullscreenAPI.available() ? (
             <Button
                 className={styles.stageButton}
-                onClick={onSetStageFull}
+                onClick={onSetStageFullScreen}
             >
                 <img
-                    alt={props.intl.formatMessage(messages.fullStageSizeMessage)}
+                    alt={props.intl.formatMessage(messages.fullStageMessage)}
                     className={styles.stageButtonIcon}
                     draggable={false}
                     src={fullScreenIcon}
@@ -209,7 +217,7 @@ const StageHeaderComponent = function (props) {
                             {/* {popoutWindowButton} */}
                             <Button
                                 className={styles.stageButton}
-                                onClick={onSetStageFull}
+                                onClick={onSetStageFullScreen}
                             >
                                 <img
                                     alt={props.intl.formatMessage(messages.fullStageSizeMessage)}
@@ -230,7 +238,6 @@ const StageHeaderComponent = function (props) {
 };
 
 const mapStateToProps = state => ({
-    customStageSize: state.scratchGui.customStageSize,
     // This is the button's mode, as opposed to the actual current state
     stageSizeMode: state.scratchGui.stageSize.stageSize
 });
@@ -241,13 +248,15 @@ StageHeaderComponent.propTypes = {
         width: PropTypes.number,
         height: PropTypes.number
     }),
+    showFixedLargeSize: PropTypes.bool
     isFullScreen: PropTypes.bool.isRequired,
     isPlayerOnly: PropTypes.bool.isRequired,
     onKeyPress: PropTypes.func.isRequired,
-    onSetStageFull: PropTypes.func.isRequired,
+    onSetStageFullScreen: PropTypes.func.isRequired,
+    onSetStageUnFullScreen: PropTypes.func.isRequired,
     onSetStageLarge: PropTypes.func.isRequired,
     onSetStageSmall: PropTypes.func.isRequired,
-    onSetStageUnFull: PropTypes.func.isRequired,
+    onSetStageFull: PropTypes.func.isRequired,
     onOpenSettings: PropTypes.func.isRequired,
     isEmbedded: PropTypes.bool.isRequired,
     stageSizeMode: PropTypes.oneOf(Object.keys(STAGE_SIZE_MODES)),

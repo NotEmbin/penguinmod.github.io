@@ -94,7 +94,7 @@ class SpriteInfo extends React.Component {
         const xPosition = (
             <div className={styles.group}>
                 {
-                    (stageSize === STAGE_DISPLAY_SIZES.large) ?
+                    (stageSize === STAGE_DISPLAY_SIZES.full || stageSize === STAGE_DISPLAY_SIZES.large) ?
                         <div className={styles.iconWrapper}>
                             <img
                                 aria-hidden="true"
@@ -121,7 +121,7 @@ class SpriteInfo extends React.Component {
         const yPosition = (
             <div className={styles.group}>
                 {
-                    (stageSize === STAGE_DISPLAY_SIZES.large) ?
+                    (stageSize === STAGE_DISPLAY_SIZES.full || stageSize === STAGE_DISPLAY_SIZES.large) ?
                         <div className={styles.iconWrapper}>
                             <img
                                 aria-hidden="true"
@@ -178,7 +178,7 @@ class SpriteInfo extends React.Component {
                 <div className={classNames(styles.row, styles.rowSecondary)}>
                     <div className={labelAbove ? styles.column : styles.group}>
                         {
-                            stageSize === STAGE_DISPLAY_SIZES.large ?
+                            stageSize === STAGE_DISPLAY_SIZES.full || stageSize === STAGE_DISPLAY_SIZES.large ?
                                 <Label
                                     secondary
                                     text={showLabel}

@@ -44,7 +44,7 @@ import TWRestorePointManager from '../../containers/tw-restore-point-manager.jsx
 import TWFontsModal from '../../containers/tw-fonts-modal.jsx';
 import PMExtensionModals from '../../containers/pm-extension-modals.jsx';
 
-import layout, {STAGE_SIZE_MODES} from '../../lib/layout-constants';
+import {STAGE_SIZE_MODES, FIXED_WIDTH, MINIMUM_NON_STAGE_WIDTH} from '../../lib/layout-constants';
 import {resolveStageSize} from '../../lib/screen-utils';
 
 import {isRendererSupported, isBrowserSupported} from '../../lib/tw-environment-support-prober';
@@ -361,9 +361,9 @@ const GUIComponent = props => {
         });
     };
 
-    const minWidth = layout.fullSizeMinWidth + Math.max(0, customStageSize.width - layout.referenceWidth);
-    return (<MediaQuery minWidth={minWidth}>{isFullSize => {
-        const stageSize = resolveStageSize(stageSizeMode, isFullSize);
+    const unconstrainedWidth = MINIMUM_NON_STAGE_WIDTH + FIXED_WIDTH + Math.max(0, customStageSize.width - FIXED_WIDTH);
+    return (<MediaQuery minWidth={unconstrainedWidth}>{isUnconstrained => {
+        const stageSize = resolveStageSize(stageSizeMode, isUnconstrained);
 
         const alwaysEnabledModals = (
             <React.Fragment>
@@ -396,7 +396,7 @@ const GUIComponent = props => {
                     isRendererSupported={isRendererSupported()}
                     isRtl={isRtl}
                     loading={loading}
-                    stageSize={STAGE_SIZE_MODES.large}
+                    stageSize={STAGE_SIZE_MODES.full}
                     vm={vm}
                 >
                     {alertsVisible ? (
