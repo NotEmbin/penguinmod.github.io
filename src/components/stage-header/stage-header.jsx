@@ -19,10 +19,7 @@ import smallStageIcon from './icon--small-stage.svg';
 <<<<<<< HEAD
 =======
 import unFullScreenIcon from './icon--unfullscreen.svg';
-<<<<<<< Updated upstream
-=======
 >>>>>>> 5f1522b0b551806087ae8bb126c28d9491f72bf7
->>>>>>> Stashed changes
 import fullStageIcon from './icon--full-stage.svg';
 import settingsIcon from './icon--settings.svg';
 
@@ -73,15 +70,11 @@ const enableSettingsButton = new URLSearchParams(location.search).has('settings-
 const StageHeaderComponent = function (props) {
     const {
         customStageSize,
-<<<<<<< Updated upstream
-		showFixedLargeSize,
-=======
 <<<<<<< HEAD
         showFixedLargeSize,
 =======
 		showFixedLargeSize,
 >>>>>>> 5f1522b0b551806087ae8bb126c28d9491f72bf7
->>>>>>> Stashed changes
         isFullScreen,
         isPlayerOnly,
         onKeyPress,
