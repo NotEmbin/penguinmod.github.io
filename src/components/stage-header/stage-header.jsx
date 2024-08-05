@@ -15,7 +15,7 @@ import fullScreenIcon from './icon--fullscreen.svg';
 import largeStageIcon from './icon--large-stage.svg';
 import smallStageIcon from './icon--small-stage.svg';
 import unFullScreenIcon from './icon--unfullscreen.svg';
-import fullStageIcon from '!../../lib/tw-recolor/build!./icon--full-stage.svg';
+import fullStageIcon from './icon--full-stage.svg';
 import settingsIcon from './icon--settings.svg';
 
 // import popoutIcon from './icon--popout.svg';
