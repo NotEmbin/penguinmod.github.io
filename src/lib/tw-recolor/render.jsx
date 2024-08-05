@@ -19,7 +19,7 @@ TWRenderRecoloredImage.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    theme: state.scratchGui.theme.theme
+    //theme: state.scratchGui.theme.theme
 });
 
 const mapDispatchToProps = () => ({});
