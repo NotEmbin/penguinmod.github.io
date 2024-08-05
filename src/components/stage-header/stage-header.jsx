@@ -248,7 +248,7 @@ StageHeaderComponent.propTypes = {
         width: PropTypes.number,
         height: PropTypes.number
     }),
-    showFixedLargeSize: PropTypes.bool
+    showFixedLargeSize: PropTypes.bool,
     isFullScreen: PropTypes.bool.isRequired,
     isPlayerOnly: PropTypes.bool.isRequired,
     onKeyPress: PropTypes.func.isRequired,
