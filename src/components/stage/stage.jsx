@@ -48,7 +48,7 @@ const StageComponent = props => {
                     {[styles.withColorPicker]: !isFullScreen && isColorPicking})}
                 onDoubleClick={onDoubleClick}
                 style={isPlayerOnly ? null : {
-                    minWidth: `${minWidth}px`
+                    minWidth: `${minWidth + 2}px`
                 }}
             >
                 <Box
