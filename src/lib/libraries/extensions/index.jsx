@@ -399,6 +399,16 @@ const menuItems = [
         featured: true
     },
     {
+        name: 'Zip',
+        extensionId: 'https://extensions.turbowarp.org/CST1229/zip.js',
+        iconURL: 'https://extensions.turbowarp.org/images/CST1229/zip.svg',
+        insetIconURL: turbowarpIcon,
+        tags: ['turbowarp', 'datamgmt'],
+        description: 'Create and edit .zip format files, including .sb3 files.',
+        twDeveloper: 'CST1229',
+        featured: true
+    },
+    {
         name: 'Pen+',
         extensionId: 'https://extensions.penguinmod.com/extensions/ObviousAlexC/PenPlus.js',
         tags: ['categoryexpansion', 'graphics'],
@@ -671,16 +681,6 @@ const menuItems = [
         extDeveloper: 'silvxrcat'
     },
     {
-        name: 'PenguinAI',
-        extensionId: 'https://extensions.penguinmod.com/extensions/MubiLop/penguingpt.js',
-        iconURL: 'https://extensions.penguinmod.com/images/MubiLop/penguingpt.png',
-        tags: ['penguinmod'],
-        description: 'Talk to AI! Use Models like DALL-E-3, GPT, LLama, Claude, and more! Please read PenguinMod\'s Privacy Policy before use.',
-        extDeveloper: 'MubiLop',
-        internetConnectionRequired: true,
-        featured: true
-    },
-    {
         name: 'HTML iframe Elements',
         extensionId: 'jgIframe',
         iconURL: jgIframeExtensionIcon,
@@ -767,7 +767,7 @@ const menuItems = [
     },
     {
         name: 'McUtils',
-        extensionId: 'https://extensions.turbowarp.org/Lily/McUtils.js', // update reference once file names are updated
+        extensionId: 'https://extensions.turbowarp.org/Lily/McUtils.js',
         tags: ['turbowarp', 'joke'],
         iconURL: 'https://extensions.turbowarp.org/images/Lily/McUtils.png',
         insetIconURL: turbowarpIcon,
