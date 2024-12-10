@@ -6,16 +6,16 @@ import log from './log';
 import { setProjectTitle } from '../reducers/project-title';
 import { setAuthor, setDescription, setExtraProjectInfo, setRemixedProjectInfo } from '../reducers/tw';
 
-const API_URL = 'https://projects.penguinmod.com/api/projects/getPublished?id=$id';
-const API_REMIX_URL = 'https://projects.penguinmod.com/api/pmWrapper/remixes?id=$id';
+const API_URL = 'https://projects.penguinmod.com/api/v1/projects/getproject?projectID=$id&requestType=metadata';
+const API_REMIX_URL = 'https://projects.penguinmod.com/api/v1/projects/getremixes?projectId=$id';
 
 function APIProjectToReadableProject(apiProject) {
     return {
         id: apiProject.id,
-        name: apiProject.name,
+        name: apiProject.title,
         desc: apiProject.instructions,
         notes: apiProject.notes,
-        author: { id: -1, username: apiProject.owner }
+        author: { id: apiProject.author.id, username: apiProject.author.username }
     }
 }
 
@@ -95,7 +95,7 @@ const TWProjectMetaFetcherHOC = function (WrappedComponent) {
                         this.props.onSetProjectTitle(title);
                     }
                     const authorName = data.author.username;
-                    const authorThumbnail = `https://trampoline.turbowarp.org/avatars/by-username/${data.author.username}`;
+                    const authorThumbnail = `https://projects.penguinmod.com/api/v1/users/getpfp?username=${data.author.username}`;
                     this.props.onSetAuthor(authorName, authorThumbnail);
                     const instructions = data.desc || '';
                     const credits = data.notes || '';
@@ -103,46 +103,38 @@ const TWProjectMetaFetcherHOC = function (WrappedComponent) {
                         this.props.onSetDescription(instructions, credits);
                     }
                     if (
-                        typeof rawData.accepted === 'boolean'
-                        || typeof rawData.removedsoft === 'boolean'
-                        || rawData.remix > 0 // checks isRemix and remixId existing at the same time
-                        || typeof rawData.tooLarge === 'boolean'
-                        || authorName
+                        rawData.public === true
                     ) {
                         this.props.onSetExtraProjectInfo(
-                            rawData.accepted === true && !rawData.removedsoft,
-                            rawData.remix > 0,
-                            Number(rawData.remix),
-                            rawData.tooLarge === true,
+                            rawData.public,
+                            String(rawData.remix) !== '0',
+                            String(rawData.remix),
+                            false,
                             authorName,
-                            new Date(rawData.date),
-                            rawData.updating === true
+                            new Date(rawData.lastUpdate),
+                            rawData.lastUpdate !== rawData.date
                         );
-                    }
-                    if (rawData.remix > 0) {
-                        // this is a remix, find the original project
-                        fetchProjectMeta(rawData.remix)
-                            .then(remixProject => {
-                                // If project ID changed, ignore the results.
-                                if (this.props.projectId !== projectId) {
-                                    return;
-                                }
-                                // If this project is hidden or not approved, ignore the results.
-                                if (
-                                    typeof remixProject.name === 'string'
-                                    || typeof remixProject.owner === 'string'
-                                ) {
+
+                        if (String(rawData.remix) !== '0') {
+                            // this is a remix, find the original project
+                            fetchProjectMeta(rawData.remix)
+                                .then(remixProject => {
+                                    // If project ID changed, ignore the results.
+                                    if (this.props.projectId !== projectId) {
+                                        return;
+                                    }
+
                                     this.props.onSetRemixedProjectInfo(
                                         true, // loaded
-                                        remixProject.name,
-                                        remixProject.owner
+                                        remixProject.title,
+                                        remixProject.author.username
                                     );
-                                }
-                            })
-                            .catch(err => {
-                                // this isnt fatal, just log
-                                log.warn('cannot fetch remixed project meta for this project;', err);
-                            });
+                                })
+                                .catch(err => {
+                                    // this isnt fatal, just log
+                                    log.warn('cannot fetch remixed project meta for this project;', err);
+                                });
+                        }
                     }
                     setIndexable(true);
                 })
